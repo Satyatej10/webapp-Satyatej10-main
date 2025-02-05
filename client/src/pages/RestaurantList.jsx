@@ -10,7 +10,7 @@ const RestaurantList = () => {
     const fetchRestaurants = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/restaurants?page=${page}`);
+        const response = await fetch(`https://webapp-satyatej10-main.onrender.com/restaurants?page=1${page}`);
         const data = await response.json();
         console.log(data); // Check the data received from the API
         setRestaurants(data.restaurants || []); // Adjust according to your API structure

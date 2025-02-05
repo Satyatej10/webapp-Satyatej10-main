@@ -24,7 +24,7 @@ const SearchPage = () => {
     const fetchRestaurants = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/restaurants/location?lat=${lat}&lng=${lng}&radius=${radius}`
+          `https://webapp-satyatej10-main.onrender.com/restaurants/location?lat=${lat}&lng=${lng}&radius=${radius}`
         );
 
         if (!response.ok) {

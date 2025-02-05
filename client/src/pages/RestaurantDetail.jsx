@@ -9,7 +9,7 @@ const RestaurantDetails = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/restaurants/${id}`);
+        const response = await fetch(`https://webapp-satyatej10-main.onrender.com/restaurants/${id}`);
         const data = await response.json();
         console.log("Fetched Restaurant Data:", data);
         setRestaurant(data);
