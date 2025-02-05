@@ -61,7 +61,7 @@ const LocationSearch = () => {
             <p className="text-black mb-8">Explore top-rated restaurants, cafes, and bars in your area. Find the perfect spot for any occasion.</p>
             <div className="space-y-4">
               <button
-                onClick={() => navigate('/restaurants')}
+                onClick={() => navigate('/restaurant')}
                 className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center"
               >
                 <FaSearch className="inline-block mr-2" />

@@ -17,7 +17,7 @@ function App() {
 
             <Route path="/location" element={<LocationQuery/>} />
             <Route path="/search" element={<SearchPage/>} />
-            <Route path="/restaurants" element={<RestaurantList/>} />
+            <Route path="/restaurant" element={<RestaurantList/>} />
             <Route path="/restaurant/:id" element={<RestaurantDetail/>} />
           </Routes>
         </div>
