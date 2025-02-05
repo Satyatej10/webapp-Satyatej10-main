@@ -1,0 +1,40 @@
+{
+    "rewrites": [
+      {
+        "source": "/restaurants",
+        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants?page=1${page}"
+      },
+      {
+        "source": "/restaurants/:id",
+        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/${id}"
+      },
+      {
+        "source": "/restaurants/location",
+        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/location?lat=${lat}&lng=${lng}&radius=${radius}"
+        
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET, POST, PUT, DELETE, OPTIONS"
+          },
+          {
+            "key": "Access-Control-Allow-Headers",
+            "value": "X-Requested-With, Content-Type, Accept"
+          }
+        ]
+      }
+    ]
+}
