@@ -1,36 +1,59 @@
-// Navbar component with transparent background
-import React from 'react';
-import { FaHome, FaSearch, FaUtensils } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { FaHome, FaSearch, FaUtensils, FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <nav className="absolute top-0 left-0 right-0 p-6 z-50 bg-transparent backdrop-blur-lg">
-      <div className="flex items-center justify-between">
-        {/* Left-side content: Search Bar */}
-        <div className="flex-grow max-w-md w-full p-3 bg-transparent rounded-md focus:outline-none placeholder-gray-400">
-          
-        </div>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-        {/* Right-side content: Home, Restaurants, and Search buttons */}
-        <ul className="flex space-x-6 font-bold text-black drop-shadow-lg">
+  return (
+    <nav className="fixed top-0 left-0 right-0 p-4 z-50 bg-white/30 backdrop-blur-lg shadow-md">
+      <div className="flex items-center justify-between max-w-6xl mx-auto">
+        
+        <button
+          className="md:hidden text-black focus:outline-none"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+
+        <ul className="hidden md:flex space-x-6 font-bold text-black ml-auto">
           <li>
-            <Link to="/" className="hover:text-gray-300 transition-colors duration-300">
+            <Link to="/" className="hover:text-gray-700 transition duration-300">
               <FaHome className="inline-block mr-1" /> Home
             </Link>
           </li>
           <li>
-            <Link to="/restaurants" className="hover:text-gray-300 transition-colors duration-300">
+            <Link to="/restaurants" className="hover:text-gray-700 transition duration-300">
               <FaUtensils className="inline-block mr-1" /> Restaurants
             </Link>
           </li>
           <li>
-            <Link to="/search" className="hover:text-gray-300 transition-colors duration-300">
+            <Link to="/search" className="hover:text-gray-700 transition duration-300">
               <FaSearch className="inline-block mr-1" /> Search
             </Link>
           </li>
         </ul>
       </div>
+
+      {menuOpen && (
+        <ul className="md:hidden flex flex-col space-y-4 bg-stone-100 backdrop-blur-lg absolute top-16 left-0 w-full p-4 shadow-lg z-40">
+          <li>
+            <Link to="/" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
+              <FaHome className="inline-block mr-2" /> Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/restaurants" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
+              <FaUtensils className="inline-block mr-2" /> Restaurants
+            </Link>
+          </li>
+          <li>
+            <Link to="/search" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
+              <FaSearch className="inline-block mr-2" /> Search
+            </Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };
