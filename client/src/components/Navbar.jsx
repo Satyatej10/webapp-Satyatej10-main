@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/restaurants" className="hover:text-gray-700 transition duration-300">
+            <Link to="/restaurant" className="hover:text-gray-700 transition duration-300">
               <FaUtensils className="inline-block mr-1" /> Restaurants
             </Link>
           </li>
