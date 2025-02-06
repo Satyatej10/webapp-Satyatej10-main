@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -26,9 +27,8 @@ const RestaurantDetails = () => {
   if (!restaurant) return <p className="text-center text-red-500">Restaurant not found.</p>;
 
   return (
-    <div className="w-full p-6 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 rounded-lg shadow-lg">
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div className="bg-gradient-to-r from-slate-100 via-gray-200 to-stone-300 min-h-screen py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-10 p-5">
         
         {/* Left Section - Image & Rating */}
         <div className="relative">
@@ -47,18 +47,16 @@ const RestaurantDetails = () => {
           <h1 className="text-4xl font-bold text-biscuit-900">{restaurant.name}</h1>
           <p className="text-buscuit-600 text-lg mt-2">{restaurant.location?.locality || "Location not available"}</p>
 
-          {/* Cuisines */}
-          <p className="mt-4 text-white-200 text-lg"><b>Cuisine:</b> {restaurant.cuisines || "N/A"}</p>
-
-          {/* Address */}
-          <p className="mt-2"><b>Address:</b> {restaurant.location?.address || "N/A"}</p>
-
-          {/* Pricing & Cost */}
-          <p className="mt-2"><b>Average Cost for Two:</b> ₹{restaurant.average_cost_for_two || "N/A"}</p>
-
-          {/* Contact */}
-          <p className="mt-2"><b>Phone:</b> {restaurant.phone_numbers || "Not available"}</p>
-
+                   <div className="mt-4 space-y-2 text-gray-800">
+     <p><b>Cuisine:</b> {restaurant.cuisines || "N/A"}</p>
+                   <p><b>Address:</b> {restaurant.location?.address || "N/A"}</p>
+               <p><b>Average Cost for Two:</b> ₹{restaurant.average_cost_for_two || "N/A"}</p>
+               <p><b>Online Delivery:</b> {restaurant.has_online_delivery ? "Available" : "Not Available"}</p>
+               <p><b>Table Booking:</b> {restaurant.has_table_booking ? "Available" : "Not Available"}</p>
+               <p><b>Price Range:</b> {restaurant.price_range || "N/A"}</p>
+               <p><b>Rating:</b> {restaurant.user_rating?.rating_text || "N/A"} ({restaurant.user_rating?.votes} votes)</p>
+               <p><b>Phone:</b> {restaurant.phone_numbers || "Not available"}</p>
+             </div>
           {/* Visit Website Button */}
           {restaurant.url && (
             <a
@@ -74,20 +72,38 @@ const RestaurantDetails = () => {
 
       </div>
 
-      {/* Menu Section */}
-      {restaurant.menu_url && (
-        <div className="mt-10 p-6 bg-beige-100 rounded-lg">
-          <h2 className="text-3xl font-semibold text-buscuit-1000 mb-4">Menu</h2>
-          <a
-            href={restaurant.menu_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            Click here to view menu 🍽️
-          </a>
-        </div>
-      )}
+      {/* Menu and Events Section */}
+       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 pl-4 pr-4">
+           {/* Menu Section */}
+           {restaurant.menu_url && (
+             <div className="p-6 bg-gray-50 rounded-lg shadow-md transition hover:shadow-lg">
+               <h2 className="text-2xl font-semibold text-gray-800 mb-4">🍽️ Menu</h2>
+               <a
+                 href={restaurant.menu_url}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-blue-600 font-semibold hover:underline"
+               >
+                 Click here to view menu
+               </a>
+             </div>
+           )}
+
+           {/* Events Section */}
+           {restaurant.events_url && (
+             <div className="p-6 bg-gray-50 rounded-lg shadow-md transition hover:shadow-lg">
+               <h2 className="text-2xl font-semibold text-gray-800 mb-4">🎉 Events</h2>
+               <a
+                 href={restaurant.events_url}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-blue-600 font-semibold hover:underline"
+               >
+                 Check Upcoming Events
+               </a>
+             </div>
+           )}
+         </div>
     </div>
   );
 };

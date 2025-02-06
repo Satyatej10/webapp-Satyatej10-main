@@ -12,8 +12,8 @@ const RestaurantList = () => {
       try {
         const response = await fetch(`https://webapp-satyatej10-main.onrender.com/restaurants?page=1${page}`);
         const data = await response.json();
-        console.log(data); // Check the data received from the API
-        setRestaurants(data.restaurants || []); // Adjust according to your API structure
+        console.log(data); 
+        setRestaurants(data.restaurants || []); 
       } catch (error) {
         console.error("Error fetching restaurants:", error);
       }
@@ -24,7 +24,7 @@ const RestaurantList = () => {
   }, [page]);
 
   return (
-    <div className="w-full p-6 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 rounded-lg shadow-lg">
+    <div className="w-full p-6 bg-gradient-to-r from-slate-100 via-gray-200 to-stone-300 rounded-lg shadow-lg pt-16 min-h-screen">
       <h1 className="text-4xl font-extrabold text-center text-gray-900 mb-8 drop-shadow-lg">
         Discover Top Restaurants
       </h1>

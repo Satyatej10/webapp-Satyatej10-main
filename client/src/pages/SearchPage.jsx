@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import RestaurantCard from '../components/RestaurantCard'; // Import the RestaurantCard component
+import RestaurantCard from '../components/RestaurantCard'; 
 
 const SearchPage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -44,13 +44,14 @@ const SearchPage = () => {
   }, [lat, lng, radius]);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className='bg-gradient-to-r from-slate-100 via-gray-200 to-stone-300 min-h-screen py-15'>
+    <div className="container mx-auto p-5 ">
       <h2 className="text-2xl font-semibold text-center mb-6">Nearby Restaurants</h2>
 
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">Error: {error}</p>}
 
-      {!loading && !error && restaurants.length === 0 && <p>No restaurants found.</p>}
+      {!loading && !error && restaurants.length === 0 && <p className='px-1.5'>No restaurants found.</p>}
 
       {!loading && !error && restaurants.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -58,7 +59,9 @@ const SearchPage = () => {
             <RestaurantCard key={index} restaurant={item.restaurant} />
           ))}
         </div>
+
       )}
+    </div>
     </div>
   );
 };
