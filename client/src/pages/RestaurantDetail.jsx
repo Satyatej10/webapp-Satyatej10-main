@@ -99,7 +99,7 @@ const RestaurantDetails = () => {
                  rel="noopener noreferrer"
                  className="text-blue-600 font-semibold hover:underline"
                >
-                 Check Upcoming Events
+                 Check Upcoming Events Here
                </a>
              </div>
            )}
