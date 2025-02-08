@@ -67,20 +67,12 @@ const uploadAndFindRestaurants = async (req, res) => {
             .find({ "restaurants.restaurant.cuisines": { $in: topCuisines } })
             .toArray();
         
-        const filteredRestaurants = result.flatMap(doc =>
-            doc.restaurants
-                .filter(r => topCuisines.some(c => r.restaurant.cuisines.includes(c)))
-                .map(r => ({
-                    name: r.restaurant.name,
-                    location: r.restaurant.location,
-                    cuisines: r.restaurant.cuisines,
-                    user_rating: r.restaurant.user_rating,
-                    price_range: r.restaurant.price_range,
-                    featured_image: r.restaurant.featured_image,
-                    menu_url: r.restaurant.menu_url,
-                    url: r.restaurant.url
-                }))
-        );
+            const filteredRestaurants = result.flatMap(doc =>
+                doc.restaurants.filter(r => topCuisines.some(c => r.restaurant.cuisines.includes(c))) // Match cuisines
+            );
+            
+            res.json({ restaurants: filteredRestaurants });
+            
 
         if (filteredRestaurants.length === 0) {
             return res.json({ message: "No matching restaurants found", restaurants: [] });
