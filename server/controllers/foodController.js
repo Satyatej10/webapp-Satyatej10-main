@@ -1,3 +1,30 @@
+const connectDB = require("../config/db");
+const axios = require("axios");
+const multer = require("multer");
+const HF_API_KEY = process.env.HF_API_KEY;
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+const detectFood = async (imageBuffer) => {
+    try {
+        const response = await axios.post(
+            "https://api-inference.huggingface.co/models/ewanlong/food_type_image_detection",
+            imageBuffer,
+            {
+                headers: {
+                    Authorization: `Bearer ${HF_API_KEY}`,
+                    "Content-Type": "application/octet-stream",
+                },
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.error("Error from API:", error.response ? error.response.data : error.message);
+        return null;
+    }
+};
 const uploadAndFindRestaurants = async (req, res) => {
     if (!req.file) return res.status(400).json({ error: "No image uploaded" });
 
@@ -59,3 +86,5 @@ const uploadAndFindRestaurants = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
+
+module.exports = { uploadAndFindRestaurants, upload };
