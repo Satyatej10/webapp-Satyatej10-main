@@ -55,7 +55,7 @@ const NamePage = () => {
   const currentRestaurants = restaurants.slice(indexOfFirstRestaurant, indexOfLastRestaurant);
 
   return (
-    <div className="container mx-auto p-8 pt-16 bg-gradient-to-r from-slate-100 via-gray-200 to-stone-500 min-h-screen">
+    <div className="container mx-auto p-8 pt-16 bg-gradient-to-r from-slate-200 via-gray-200 to-stone-300 min-h-screen">
       <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
         Search Results for "{restaurantName}"
       </h2>
