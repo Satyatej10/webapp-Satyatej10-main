@@ -1,20 +1,24 @@
 {
   "rewrites": [
     {
-      "source": "/api/restaurants",
+      "source": "/restaurants",
       "destination": "https://webapp-satyatej10-main.onrender.com/restaurants"
     },
     {
-      "source": "/api/restaurants/:id",
+      "source": "/restaurants/:id",
       "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/:id"
     },
     {
-      "source": "/api/restaurants/location",
+      "source": "/restaurants/location",
       "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/location"
     },
     {
-      "source": "/api/restaurants/image-search",
+      "source": "/restaurants/image-search",
       "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/image-search"
+    },
+    {
+      "source": "/restaurants/searchbyname",
+      "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/searchnyname"
     },
     {
       "source": "/(.*)",

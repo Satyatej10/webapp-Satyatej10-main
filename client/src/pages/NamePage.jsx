@@ -23,7 +23,7 @@ const NamePage = () => {
 
       try {
         const response = await fetch(
-          `https://webapp-satyatej10-main.onrender.com/restaurants?name=${restaurantName}`
+          `https://webapp-satyatej10-main.onrender.com/restaurants/searchbyname?name=${restaurantName}`
         );
 
         const data = await response.json();
