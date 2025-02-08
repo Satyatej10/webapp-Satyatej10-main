@@ -3,6 +3,6 @@ const router = express.Router();
 const { getRestaurantByName } = require("../controllers/NameController"); // Import controller
 
 // Define route for searching restaurants
-router.get("/searchbyname/:name", getRestaurantByName);
+router.get("/", getRestaurantByName);
 
 module.exports = router;

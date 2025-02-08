@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use("/restaurants", searchRestaurantsController);
-app.use("/restaurants", getRestaurantByName);
+app.use("/restaurants/searchbyname", getRestaurantByName);
 
 app.use("/restaurants",getRestaurantsByLocation);
 app.use("/restaurants",getRestaurantById)
