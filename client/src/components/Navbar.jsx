@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/restaurant" className="hover:text-gray-700 transition duration-300">
+            <Link to="/restaurants" className="hover:text-gray-700 transition duration-300">
               <FaUtensils className="inline-block mr-1" /> Restaurants
             </Link>
           </li>
@@ -43,7 +43,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/restaurant" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
+            <Link to="/restaurants" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
               <FaUtensils className="inline-block mr-2" /> Restaurants
             </Link>
           </li>

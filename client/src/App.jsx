@@ -4,8 +4,9 @@ import LocationSearch from "./pages/LocationSearch";
 import SearchPage from "./pages/SearchPage";
 import RestaurantList from "./pages/RestaurantList";
 import RestaurantDetail from "./pages/RestaurantDetail";
-import LocationQuery from "./pages/LocationQuery"
+import LocationQuery from "./pages/Search"
 import Navbar from "./components/Navbar";
+import ImageSearch from "./pages/Image-search"
 function App() {
   return (
     <Router>
@@ -14,10 +15,10 @@ function App() {
         <div >
           <Routes>
             <Route path="/" element={<LocationSearch/>} />
-
+            <Route path="/image-search" element={<ImageSearch/>} />
             <Route path="/search" element={<LocationQuery/>} />
             <Route path="/location" element={<SearchPage/>} />
-            <Route path="/restaurant" element={<RestaurantList/>} />
+            <Route path="/restaurants" element={<RestaurantList/>} />
             <Route path="/restaurant/:id" element={<RestaurantDetail/>} />
           </Routes>
         </div>

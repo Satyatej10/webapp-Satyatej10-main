@@ -7,7 +7,6 @@ const SearchPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Get query parameters from the URL
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
   const lat = queryParams.get('lat');
