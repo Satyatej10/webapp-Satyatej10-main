@@ -1,45 +1,43 @@
 {
-    "rewrites": [
-      {
-        "source": "/restaurants",
-        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants?page=1${page}"
-      },
-      {
-        "source": "/restaurants/:id",
-        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/${id}"
-      },
-      {
-        "source": "/restaurants/location",
-        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/location?lat=${lat}&lng=${lng}&radius=${radius}"
-        
-      },
-      {
-        "source": "/restaurants/image-search",
-        "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/image-search"
-        
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ],
-    "headers": [
-      {
-        "source": "/(.*)",
-        "headers": [
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          },
-          {
-            "key": "Access-Control-Allow-Methods",
-            "value": "GET, POST, PUT, DELETE, OPTIONS"
-          },
-          {
-            "key": "Access-Control-Allow-Headers",
-            "value": "X-Requested-With, Content-Type, Accept"
-          }
-        ]
-      }
-    ]
+  "rewrites": [
+    {
+      "source": "/api/restaurants",
+      "destination": "https://webapp-satyatej10-main.onrender.com/restaurants"
+    },
+    {
+      "source": "/api/restaurants/:id",
+      "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/:id"
+    },
+    {
+      "source": "/api/restaurants/location",
+      "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/location"
+    },
+    {
+      "source": "/api/restaurants/image-search",
+      "destination": "https://webapp-satyatej10-main.onrender.com/restaurants/image-search"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-Requested-With, Content-Type, Accept"
+        }
+      ]
+    }
+  ]
 }

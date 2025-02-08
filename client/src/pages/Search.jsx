@@ -17,9 +17,10 @@ const Search = () => {
       navigate(`/restaurant/${inputValue}`);
     } else if (activeTab === "name" && inputValue) {
       console.log("Navigating to restaurant search by name:", inputValue);
-      navigate(`/restaurant/name/${inputValue}`);
+      navigate(`/restaurant/name/${encodeURIComponent(inputValue)}`);
+
     } else if (activeTab === "location" && latitude && longitude) {
-      console.log("Navigating to location search with:", { latitude, longitude, radius: 5 });
+      console.log("Navigating to location search with:", { latitude, longitude, radius: 10 });
       navigate(`/location?lat=${latitude}&lng=${longitude}&radius=5`);
     } else if (activeTab === "image" && image) {
       console.log("Navigating to Image Search with image:", image.name);

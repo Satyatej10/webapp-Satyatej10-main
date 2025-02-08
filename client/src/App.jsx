@@ -7,6 +7,7 @@ import RestaurantDetail from "./pages/RestaurantDetail";
 import LocationQuery from "./pages/Search"
 import Navbar from "./components/Navbar";
 import ImageSearch from "./pages/Image-search"
+import NamePage from "./pages/NamePage"
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <div >
           <Routes>
+            <Route path="/restaurant/name/:name" element={<NamePage />} />
             <Route path="/" element={<LocationSearch/>} />
             <Route path="/image-search" element={<ImageSearch/>} />
             <Route path="/search" element={<LocationQuery/>} />
