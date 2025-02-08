@@ -43,7 +43,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/restaurants" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
+            <Link to="/restaurant" onClick={() => setMenuOpen(false)} className="block text-black text-lg">
               <FaUtensils className="inline-block mr-2" /> Restaurants
             </Link>
           </li>

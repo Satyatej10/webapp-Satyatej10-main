@@ -20,7 +20,7 @@ function App() {
             <Route path="/image-search" element={<ImageSearch/>} />
             <Route path="/search" element={<LocationQuery/>} />
             <Route path="/location" element={<SearchPage/>} />
-            <Route path="/restaurants" element={<RestaurantList/>} />
+            <Route path="/restaurant" element={<RestaurantList/>} />
             <Route path="/restaurant/:id" element={<RestaurantDetail/>} />
           </Routes>
         </div>
