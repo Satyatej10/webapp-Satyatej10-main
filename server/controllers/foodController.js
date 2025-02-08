@@ -1,31 +1,3 @@
-const connectDB = require("../config/db");
-const axios = require("axios");
-const multer = require("multer");
-const HF_API_KEY = process.env.HF_API_KEY;
-
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
-
-const detectFood = async (imageBuffer) => {
-    try {
-        const response = await axios.post(
-            "https://api-inference.huggingface.co/models/ewanlong/food_type_image_detection",
-            imageBuffer,
-            {
-                headers: {
-                    Authorization: `Bearer ${HF_API_KEY}`,
-                    "Content-Type": "application/octet-stream",
-                },
-            }
-        );
-
-        return response.data;
-    } catch (error) {
-        console.error("Error from API:", error.response ? error.response.data : error.message);
-        return null;
-    }
-};
-
 const uploadAndFindRestaurants = async (req, res) => {
     if (!req.file) return res.status(400).json({ error: "No image uploaded" });
 
@@ -67,10 +39,16 @@ const uploadAndFindRestaurants = async (req, res) => {
             .find({ "restaurants.restaurant.cuisines": { $in: topCuisines } })
             .toArray();
         
-        const filteredRestaurants = result.flatMap(doc =>
-                doc.restaurants.filter(r => topCuisines.some(c => r.restaurant.cuisines.includes(c))) // Match cuisines
-            );
-            
+        let filteredRestaurants = result.flatMap(doc =>
+            doc.restaurants.filter(r => topCuisines.some(c => r.restaurant.cuisines.includes(c))) // Match cuisines
+        );
+
+        // ✅ Ensure `user_rating` always exists
+        filteredRestaurants = filteredRestaurants.map(r => ({
+            ...r.restaurant,
+            user_rating: r.restaurant.user_rating || { aggregate_rating: "N/A", votes: 0 } // Default if missing
+        }));
+
         if (filteredRestaurants.length === 0) {
             return res.json({ message: "No matching restaurants found", restaurants: [] });
         }
@@ -81,5 +59,3 @@ const uploadAndFindRestaurants = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
-
-module.exports = { uploadAndFindRestaurants, upload };
